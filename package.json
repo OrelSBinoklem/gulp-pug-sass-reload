@@ -1,0 +1,26 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "Template for Frontend work. Includes SASS/Pug compilation, server (localhost), livereload, images optimization, CSS minification",
+  "main": "gulpfile.js",
+  "scripts": {},
+  "author": "Fedir Kopakov",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-html-prettify": "0.0.1",
+    "gulp-image": "^4.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-pug": "^3.0.4",
+    "gulp-pug-inheritance": "^0.1.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sass-glob": "^1.0.8",
+    "gulp-sourcemaps": "^1.6.0",
+    "run-sequence": "^1.2.2"
+  },
+  "dependencies": {}
+}

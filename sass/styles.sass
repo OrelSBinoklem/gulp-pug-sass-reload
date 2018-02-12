@@ -1,0 +1,311 @@
+@import "mixing.sass"
+@import "constant.sass"
+
+/*====================================================== Header ======================================================*/
+.header
+  background-color: rgba(255, 255, 255, 0.62)
+  position: absolute
+  left: 0
+  top: 0
+  height: 283px
+  width: 100%
+  z-index: 2
+  &__logo
+    float: left
+    font-size: 0
+    height: 150px
+    padding-top: 10px
+    width: 200px
+    a
+      display: inline-block
+  &-contacts
+    overflow: hidden
+
+
+/*==================================================== end Header ====================================================*/
+/**/
+/*===================================================== Main Page ====================================================*/
+.big-slider
+  color: #fff
+  position: relative
+  &__item
+    background-position: center 0
+    background-repeat: no-repeat
+    -webkit-background-size: cover
+    background-size: cover
+    height: 838px
+  &__title
+    font-size: 60px
+    line-height: 86px
+    font-weight: 300
+
+
+
+body
+  +bgj(index, center, 0)
+/*=================================================== end Main Page ==================================================*/
+/**/
+/*==================================================== Inside Page ===================================================*/
+.bread-crumbs
+  font-size: 0
+  padding: 34px 0 11px
+  text-align: center
+  &__link, &__slash, &__show
+    display: inline-block
+    font-size: 14px
+    line-height: 18px
+    vertical-align: top
+  &__link
+    color: #424242
+    text-decoration: underline
+    &:hover, &:focus
+      text-decoration: none
+  &__slash
+    margin: 0 11px
+    position: relative
+    &:before
+      content: "\f105"
+      font: normal normal normal 14px/1 FontAwesome
+      font-size: 14px
+      text-rendering: auto
+      -webkit-font-smoothing: antialiased
+      -moz-osx-font-smoothing: grayscale
+  &__show
+    color: #000
+
+.navigation
+  display: block
+  font-size: 0
+  margin-top: 102px
+  position: relative
+  text-align: center
+  width: 100%
+  &__number, &__button
+    color: #333333
+    line-height: 26px
+    &:hover, &:focus, &.active
+      color: #0070c9
+  &__number
+    display: inline-block
+    font-weight: 300
+    margin: 0 2%
+    padding: 0 5px
+    vertical-align: top
+  &__button
+    position: absolute
+    top: 0
+    &:before
+      font: normal normal normal 14px/1 FontAwesome
+      font-size: inherit
+      text-rendering: auto
+      -webkit-font-smoothing: antialiased
+      -moz-osx-font-smoothing: grayscale
+      position: absolute
+      top: 5px
+    &._return
+      padding-left: 20px
+      left: 0
+      &:before
+        content: "\f100"
+        left: 0
+    &._next
+      padding-right: 20px
+      right: 0
+      &:before
+        content: "\f101"
+        right: 0
+
+		
+    //&:before
+    //  content: "\f105"
+    //  font: normal normal normal 14px/1 FontAwesome
+    //  font-size: 14px
+    //  line-height: 16px
+    //  text-rendering: auto
+    //  -webkit-font-smoothing: antialiased
+    //  -moz-osx-font-smoothing: grayscale		
+		
+
+/**/
+/*---------- Before 1921 ---------------------------------------------------------------------------------------------*/
+@media screen and (min-width: 1921px)
+  .big-slider__item, .cooperation, .clients, .communications
+    -webkit-background-size: cover
+    background-size: cover
+/*---------- end Before 1921 -----------------------------------------------------------------------------------------*/
+/**/
+/*================================================== end Inside Page =================================================*/
+/**/
+/*====================================================== Footer ======================================================*/
+.footer-jump
+  display: block
+  height: 552px
+  width: 100%
+
+.footer
+  background-color: #000
+  display: none
+  position: absolute  
+  bottom: 0
+  left: 0
+  height: 552px
+  width: 100%
+  &-developer
+    &__name
+      color: #000
+      +TransitionBlock(0.3)
+    &__link
+      color: #fff
+      &:hover, &:focus
+        .footer-developer__name
+          color: #fff
+/**/
+/*---------- After 1024 ----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1024px)
+  .footer-jump
+    display: none
+
+  .footer
+    position: relative
+    bottom: inherit
+    left: inherit
+
+/*---------- end After 1024 ------------------------------------------------------------------------------------------*/
+/**/		
+/*==================================================== end Footer ====================================================*/
+/**/
+/*====================================================== Popups ======================================================*/
+.popup
+  &-win
+    background-color: rgba(0, 0, 0, 0.60)
+    display: none
+    position: fixed
+    height: 100%
+    overflow: auto
+    left: 0
+    top: 0
+    width: 100%
+    z-index: 9999999
+  &__wrapper
+    background-color: #fff
+    padding: 0
+    position: relative
+    margin: 4% auto
+    max-width: 394px
+    width: 100%
+  &__close
+    border: 1px solid #000
+    cursor: pointer
+    +bdrs(50%)
+    position: absolute
+    right: 11px
+    height: 35px
+    top: 11px
+    width: 35px
+    &:before, &:after
+      content: ""
+      position: absolute
+      background-color: #b9b9b9
+      left: 50%
+      top: 50%
+      +TransRotate(45)
+      +TransitionBlock(0.3)
+    &:before
+      margin: -1px 0 0 -11px
+      height: 2px
+      width: 24px
+    &:after
+      margin: -12px 0 0 0
+      height: 24px
+      width: 2px
+    &:hover
+      background-color: #ff0000
+      border-color: #ff0000
+      &:before, &:after
+        background-color: #fff
+        +TransRotate(-45)
+  &__content
+    padding: 36px 44px 26px
+  &__title
+    font-size: 18px
+    padding: 0
+    text-transform: uppercase
+    text-align: center
+  &__form
+    display: block
+    font-size: 0
+    padding-top: 19px
+    text-align: center
+    width: 100%
+  &__submit
+    display: block
+    border: 1px solid #000
+    background-color: #000
+    color: #fff
+    font: 16px/18px 'MuseoSansCyrl500', sans-serif
+    margin-top: 15px
+    text-align: center
+    text-transform: uppercase
+    height: 50px
+    width: 100%
+    &:hover, &:focus, &:active
+      background-color: #fff
+      color: #000	
+  &__thank
+    display: block
+    font-size: 18px
+    line-height: 40px
+    padding-top: 13px
+    width: 100%
+/**/
+/*---------- After 480 -----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 480px)
+  .popup
+    &__wrapper
+      margin-top: 0
+      max-width: inherit
+    &__content
+      padding: 36px 26px 56px
+
+/*---------- end After 480 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 360 -----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 360px)
+  .popup
+    &__close
+      right: 5px
+      top: 5px
+    &__content
+      padding: 45px 10px 56px
+/*---------- end After 360 -------------------------------------------------------------------------------------------*/
+/**/
+/*===================================================== end Popups ===================================================*/
+/**/
+/*==================================================== Media Style ===================================================*/
+/**/
+/*---------- After 1024 ----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 1024px)
+
+/*---------- end After 1024 ------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 768 -----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 768px)
+
+/*---------- end After 768 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 640 -----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 640px)
+
+/*---------- end After 640 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 480 -----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 480px)
+
+/*---------- end After 480 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 360 -----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 360px)
+
+/*---------- end After 360 -------------------------------------------------------------------------------------------*/
+/**/
+/*================================================== end Media Style =================================================*/

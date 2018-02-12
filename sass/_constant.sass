@@ -1,0 +1,207 @@
+@import "mixing.sass"
+
+/**/
+/*======================================================= Fonts ======================================================*/
+//$WayFonts: MuseoSansCyrl-webfont
+//@font-face
+//  font-family: 'MuseoSans'
+//  src: url('../fonts/#{$WayFonts}.eot')
+//  src: url('../fonts/#{$WayFonts}.eot?#iefix') format('embedded-opentype'), url('../fonts/#{$WayFonts}.woff2') format('woff2'), url('../fonts/#{$WayFonts}.woff') format('woff'), url('../fonts/#{$WayFonts}.ttf') format('truetype'), url('../fonts/#{$WayFonts}.svg') format('svg')
+//  font-weight: normal
+//  font-style: normal
+/*===================================================== end Fonts ====================================================*/
+/**/
+/*=================================================== Settings Site ==================================================*/
+html, body, a, button, input, textarea
+  font: 13px Arial, Helvetica, sans-serif
+
+body > .wrapper
+  height: auto !important
+
+.wrapper
+  overflow: hidden
+  position: relative
+  min-height: 100vh !important
+  height: auto
+  min-width: 300px
+  width: 100%
+
+.center
+  margin: 0 auto
+  padding: 0 20px
+  position: relative
+  max-width: 1040px
+  width: 100%
+
+.clear:after
+  content: " "
+  clear: both
+  display: table
+
+.title
+  display: block
+  text-transform: uppercase
+  width: 100%
+  &._main
+    
+  &._inside
+    font-size: 30px
+    line-height: 33px
+    padding: 22px 0 79px
+    text-align: center
+  
+._button
+  display: inline-block
+  border: 3px solid #000
+  cursor: pointer
+  color: #000
+  font-size: 15px
+  line-height: 18px
+  height: 49px
+  text-transform: uppercase
+  text-align: center
+  width: 100%
+  -webkit-appearance: none
+  &:hover, &:focus
+    background-color: #000
+    color: #fff
+	
+.field-style
+  display: block
+  border: 1px solid #d9d9d9
+  color: #000
+  font-size: 16px
+  height: 52px
+  padding: 0 20px
+  text-align: left
+  margin-top: 20px
+  width: 100%
+  -webkit-appearance: none
+  &:hover, &:focus, &:active
+    border-color: #000
+  &.error
+    border-color: #ff0000
+	
+.scrollTop
+  position: fixed
+  display: block
+  background: #ffffff url(../img/icons/arrow-up.png) center center no-repeat
+  border: 2px solid #000
+  +bdrs(50%)
+  bottom: 5%
+  right: 5%
+  height: 66px
+  width: 66px
+  +TransitionBlock(0.3)
+  z-index: 9
+  &:hover
+    bottom: 6%	
+	
+.text
+  font-size: 16px
+  line-height: 19px
+  p
+    margin-bottom: 25px
+    &:last-child
+      margin-bottom: 0
+  a
+    color: #0099cc
+    font-size: inherit
+    line-height: inherit
+    text-decoration: underline
+    &:hover, &:focus
+      text-decoration: none
+  //h1
+  //  font-size: 28px
+  //  line-height: 28px
+  //  margin-bottom: 23px
+  //h2
+  //  font-size: 24px
+  //  line-height: 26px
+  //  margin-bottom: 17px
+  //h3
+  //  font-size: 20px
+  //  line-height: 22px
+  //  margin-bottom: 14px
+  //ul
+  //  li
+  //    padding: 0 0 14px 25px
+  //    position: relative
+  //    &:before
+  //      content: ""
+  //      position: absolute
+  //      background-color: #00bcd8
+  //      left: 15px
+  //      top: 7px
+  //      height: 4px
+  //      width: 4px
+  //      +bdrs(50%)
+  //ol
+  //  counter-reset: section
+  //  list-style-type: none
+  //  >li
+  //    padding: 0 0 15px 29px
+  //    position: relative
+  //    &:before
+  //      counter-increment: section
+  //      content: counters(section, ".") "."
+  //      color: #00bcd8
+  //      font-weight: bold
+  //      position: absolute
+  //      left: 9px
+  //      top: 1px
+  //    ol>li
+  //      padding-left: 43px
+  //ul ol, ol ul, ul ul, ol ol
+  //  margin-top: 14px
+  //ul li, ol li
+  //  font-size: 16px
+  //  line-height: 19px
+  //ul ol li:last-child,
+  //ol ul li:last-child,
+  //ol ol li:last-child,
+  //ul ul li:last-child
+  //  padding-bottom: 0
+  //table
+  //  tr:first-child td
+  //    background-color: #eaeaea
+  //    border-top: 1px solid #cccccc
+  //    padding: 10px 17px
+  //    color: #888888
+  //    font-size: 12px
+  //  td
+  //    border-bottom: 1px solid #cccccc
+  //    font-size: 14px
+  //    line-height: 17px
+  //    padding: 15px 17px
+  //    text-align: center
+  //    &.text-left
+  //      text-align: left
+  //    &.text-right
+  //      text-align: right
+  //    &:first-child
+  //      border-left: 1px solid #cccccc
+  //    &:last-child
+  //      border-right: 1px solid #cccccc
+  //  &.wtb500
+  //    min-width: 500px
+  //  &.wtb430
+  //    min-width: 430px
+/*================================================= end Settings Site ================================================*/
+/**/
+/*==================================================== Media Style ===================================================*/
+/**/
+/*---------- After 768 -----------------------------------------------------------------------------------------------*/
+//@media screen and (max-width: 768px)
+
+/*---------- end After 768 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 640 -----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 640px)
+  .center
+    padding: 0 10px
+
+/*---------- end After 640 -------------------------------------------------------------------------------------------*/
+/**/
+/*================================================== end Media Style =================================================*/
+/**/

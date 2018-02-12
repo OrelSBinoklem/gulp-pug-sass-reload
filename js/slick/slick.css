@@ -1,0 +1,202 @@
+/* Slider */
+.slick-slider {
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 0;
+}
+
+.slick-list:focus {
+    outline: none;
+}
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after {
+    display: table;
+    content: '';
+}
+.slick-track:after {
+    clear: both;
+}
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+.slick-slide.slick-loading img {
+    display: none;
+}
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/*Arrow Slider*/
+.slick-arrow {
+    background: none;
+    font-size: 0;
+    overflow: hidden;
+    position: absolute;
+    bottom: -74px;
+    text-indent: -2000px;
+    height: 46px;
+    width: 46px;
+    z-index: 3;
+}
+.slick-prev {
+    left: 6px;
+}
+.slick-next {
+    right: 2px;
+}
+.slick-arrow:before,
+.slick-arrow:after {
+    background-color: #5d5d5d;
+    content: '';
+    left: 0;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    width: 2px;
+}
+.slick-arrow:before {
+    margin: -18px 0 0 7px;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.slick-arrow:after {
+    margin: -5px 0 0 7px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.slick-next {
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.slick-arrow:hover:before,
+.slick-arrow:hover:after {
+    background-color: #0099d9;
+}
+
+/*Pointer Slider*/
+.slick-dots {
+    font-size: 0;
+    position: absolute;
+    text-align: center;
+    bottom: 47px;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+}
+.slick-dots li {
+    display: inline-block;
+    margin: 0 18px;
+}
+.slick-dots li:last-child {
+    margin-right: 0;
+}
+.slick-dots li button {
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    text-indent: -1000px;
+    height: 9px;
+    width: 9px;
+}
+.slick-dots li button:hover {
+
+}
+.slick-dots li.slick-active button {
+    background-color: #fff;
+    cursor: default;
+    opacity: 1;
+}
+
+
+/*Setting Site*/
+
+
+/*---------- After 1064 ----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1064px) {
+
+}
+/*---------- end After 1064 ------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 768 -----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+
+}
+/*---------- end After 768 -------------------------------------------------------------------------------------------*/
+/**/
+/*---------- After 480 -----------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 480px) {
+
+}
+/*---------- end After 480 -------------------------------------------------------------------------------------------*/
+/**/
