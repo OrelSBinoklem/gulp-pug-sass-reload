@@ -18,6 +18,8 @@ var runSequence =  require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
+var a_pp = require('adaptive-pixel-perfect').create();
+
 
 // pug (jade) compilation - html-preprocessor
 var pug = require('gulp-pug');
@@ -41,6 +43,8 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 // sass/scss global import - you can import all files in directory without writing names - @import "some-folder/**/*"
 var sassGlob = require('gulp-sass-glob');
+//vendor autoprefixer
+var autoprefixer = require('gulp-autoprefixer');
 
 
 // images optimization - jpg, png, svg
@@ -116,6 +120,13 @@ gulp.task('sass', function () {
 			errLogToConsole: true,
 			outputStyle: 'expanded'
 		}))
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 5 versions'],
+            cascade: false
+        }))
 		.on('error', notify.onError(function (error) {
 			return error.message;
 		}))
@@ -132,6 +143,13 @@ gulp.task('sass-production', function () {
 			errLogToConsole: true,
 			outputStyle: 'compressed'
 		}))
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 5 versions'],
+            cascade: false
+        }))
 		.on('error', notify.onError(function (error) {
 			return error.message;
 		}))
@@ -164,18 +182,30 @@ gulp.task('clean', function () {
 });
 
 // server (browserSync) settings
+var port = 3010;
+var folderForDesignScreenshots = "design";
+var portForBrowserSync = 3000;
+
 var settings = {
-	server: {
-		baseDir: paths.dist.server
-	},
-	host: 'localhost',
-	// port: 9000,
-	notify: false // don't show message "Connected to BrowserSync"
+    server: paths.dist.server,
+    cors: true,
+    middleware: function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+    },
+    socket: {
+        domain: 'localhost:' + portForBrowserSync
+    },
+    scriptPath: function (path, port, options) {
+        return "http://" + options.getIn(['socket', 'domain']) + path;
+    }
 };
 
 // browserSync server (localhost)
 gulp.task('server', function() {
 	browserSync(settings);
+
+    a_pp.start(port, folderForDesignScreenshots, portForBrowserSync);
 });
 
 

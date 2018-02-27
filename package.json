@@ -7,8 +7,10 @@
   "author": "Fedir Kopakov",
   "license": "MIT",
   "devDependencies": {
+    "adaptive-pixel-perfect": "^0.5.8",
     "browser-sync": "^2.12.8",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
     "gulp-cached": "^1.1.1",
     "gulp-clean": "^0.3.2",
     "gulp-filter": "^4.0.0",
