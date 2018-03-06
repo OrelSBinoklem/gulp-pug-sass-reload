@@ -31,11 +31,6 @@ var pug = require('gulp-pug');
 // cache files and their contents - process only different (changed) files
 var cached = require('gulp-cached');
 var filter = require('gulp-filter');
-var pugInheritance = require('gulp-pug-inheritance');
-
-// prettify html output
-var prettify = require('gulp-html-prettify');
-
 
 // sass/scss compilation
 var sass = require('gulp-sass');
@@ -91,21 +86,11 @@ gulp.task('pug', function() {
 		 	extension: '.html'
 		}))*/
 		.pipe(cached('pug'))
-		.pipe(pugInheritance({
-			basedir: paths.src.pugDir,
-			extension: '.pug',
-			skip:'node_modules'
-		}))
-		.pipe(filter(function (file) {
-			return !/\/_/.test(file.path) && !/^_/.test(file.relative);
-		}))
-		.pipe(pug())
+		.pipe(pug({
+            pretty: '\t'
+        }))
 		.on('error', notify.onError(function (error) {
 			return error.message;
-		}))
-		.pipe(prettify({
-			indent_size: 1, // 1 tab
-			indent_char: '	' // tab instead spaces
 		}))
 		.pipe(gulp.dest(paths.dist.html))
 		.on('end', reload);
