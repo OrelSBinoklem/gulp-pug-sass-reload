@@ -52,7 +52,7 @@ var paths = {
 	dist: {
 		html: './', // same directory
 		js: 'js',
-		css: 'styles',
+		css: 'css',
 		img: 'img',
 		server: './' // same directory
 	},
@@ -71,7 +71,7 @@ var paths = {
 	},
 	clean: {
 		css: 'css',
-		cssMap: 'styles/**/*.map',
+		cssMap: 'css/**/*.map',
 		html: '*.html',
 		templates: 'templates'
 	}

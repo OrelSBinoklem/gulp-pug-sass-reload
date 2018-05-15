@@ -1,70 +1,18 @@
-- var title = "— Главная";
-
-- var pluginsCss = ['js/slick/slick.css', 'js/fancybox/fancybox.css', 'styles/font-awesome.min.css'];
-//- var individualCss = [];
+- var title = "Главная";
 
 doctype html
 html(lang='ru')
   include includes/head
   body
     .wrapper
-      // Header
-      header.header
-        .center
-          .header__logo
-            a(href='', title='')
-              img(src='img/logo.png', alt='')
-          .header__info
-          // Main Menu
-          .header-menu.clear
-            button.header-menu__mobile
-              span
-              span
-              span
-            ul.header-menu__list
-              li
-                a._active(href='', title='')
-              li
-                a(href='', title='')
-      // Big Slider
-      .big-slider.clear
-        ul.big-slider__list
-          li.big-slider__item(style='background-image: url(img/trash/slide-01.jpg);')
-            .center
-              .big-slider__title Стропа ременная
-              .big-slider__text
-                | плотная и прочная тканая лента, производимая в основном из полипропилена и полиэфира.
-      //
-      .clear
-        .center
-          .title._main
-      .footer-jump
-      // Footer
-      footer.footer
-        .center
-          // By Line
-          .footer-by-line.clear
-            .footer-signature__company
-            .footer-developer
-              a.footer-developer__link(href='https://dialweb.ru/', title='Digital Agency Dial', target='_blank')
-                | Digital Agency D!AL
-                span.footer-developer__icon
-                  img(src='img/dial.png', alt='Digital Agency Dial')
+      //header
+      include includes/header
+      //\header
       for el in Array(90)
-        br
-    // Popups Call Back
-    #w-feedback.popup-win
-      .popup__wrapper
-        .popup__close
-        .popup__content
-          .popup__title Заказать звонок
-          form.popup__form
-            input.field-style.error(type='text', placeholder='Имя*')
-            input.field-style.mask-number(type='text', placeholder='Телефон*')
-            textarea.field-style(placeholder='Сообщение')
-            span.popup__signature-form *Обязательно для заполнения
-            input.popup__submit(type='submit', value='Отправить')
-          // <div class="popup__thank">Спасибо и другой текст что будет выводиться</div>
-    - var pluginsJs = ['js/slick/slick.min.js', 'js/fancybox/mousewheel.js', 'js/fancybox/fancybox.js', 'js/jquery.inputmask.bundle.min.js'];
-    //- var individualJs = [];
-    include includes/footer
+        h3 Контент
+      //footer
+      include includes/footer
+      //\footer
+    //scripts
+    include includes/scripts
+    //\scripts
