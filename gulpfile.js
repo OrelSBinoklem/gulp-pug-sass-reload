@@ -71,6 +71,7 @@ var paths = {
 	},
 	clean: {
 		css: 'css',
+		cssMap: 'styles/**/*.map',
 		html: '*.html',
 		templates: 'templates'
 	}
@@ -115,9 +116,23 @@ gulp.task('sass', function () {
 		.on('error', notify.onError(function (error) {
 			return error.message;
 		}))
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dist.css))    
 		.pipe(reload({stream: true}));
+});
+
+//clean-sass-map
+
+gulp.task('clean-sass-map', function () {
+    return gulp.src(
+        [
+            paths.clean.cssMap,
+        ],
+        {
+            read: false
+        }
+    )
+        .pipe(clean());
 });
 
 // sass compilation production - without soursemaps, minified
@@ -241,8 +256,9 @@ gulp.task('prod', function(cb) {
 	// run functions in order - first clean (delete) files, then others
 	runSequence(
 		//'clean',
+		'clean-sass-map',
 		[/*'img',*/ 'pug', 'sass-production'],
-		'watch-production',
+		//'watch-production',
 		cb
 	);
 
