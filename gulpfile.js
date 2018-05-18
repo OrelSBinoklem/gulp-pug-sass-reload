@@ -49,63 +49,79 @@ var image = require('gulp-image');
 
 // Paths
 var paths = {
-	dist: {
-		html: './', // same directory
-		js: 'js',
-		css: 'css',
-		img: 'img',
-		server: './' // same directory
-	},
-	src: {
-		pug: ['pug/*.pug'],
-		pugDir: 'pug',
-		js: 'js/**/*.js',
-		sass: 'sass/**/*.sass',
-		img: ['img/**/*']
-	},
-	watch: {
-		pug: 'pug/**/*.pug',
-		js: 'js/**/*.js',
-		sass: 'sass/**/*',
-		img: 'img/**/*'
-	},
-	clean: {
-		css: 'css',
-		cssMap: 'css/**/*.map',
-		html: '*.html',
-		templates: 'templates'
-	}
+    dist: {
+        html: './', // same directory
+        js: 'js',
+        css: 'css',
+        img: 'img',
+        server: './' // same directory
+    },
+    src: {
+        pug: ['pug/*.pug'],
+        pugDir: 'pug',
+        js: 'js/**/*.js',
+        sass: 'sass/**/*.sass',
+        img: ['img/**/*']
+    },
+    watch: {
+        pug: 'pug/*.pug',
+        pugLib: 'pug/*/**/*.pug',
+        js: 'js/**/*.js',
+        sass: 'sass/**/*',
+        img: 'img/**/*'
+    },
+    clean: {
+        css: 'css',
+        cssMap: 'css/**/*.map',
+        html: '*.html',
+        templates: 'templates'
+    }
 };
 
 
 
 // pug compilation
 gulp.task('pug', function() {
-	return gulp.src(paths.src.pug)
+    return gulp.src(paths.src.pug)
 
-		/*.pipe(changed(paths.dist.html, {
-		 	extension: '.html'
-		}))*/
-		.pipe(cached('pug'))
-		.pipe(pug({
+	/*.pipe(changed(paths.dist.html, {
+	 extension: '.html'
+	 }))*/
+        .pipe(cached('pug'))
+        .pipe(pug({
             pretty: '\t'
         }))
-		.on('error', notify.onError(function (error) {
-			return error.message;
-		}))
-		.pipe(gulp.dest(paths.dist.html))
-		.on('end', reload);
-})
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(gulp.dest(paths.dist.html))
+        .on('end', reload);
+});
+gulp.task('pug-nocache', function() {
+    return gulp.src(paths.src.pug)
+
+	/*.pipe(changed(paths.dist.html, {
+	 extension: '.html'
+	 }))*/
+        .pipe(pug({
+            pretty: '\t'
+        }))
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(gulp.dest(paths.dist.html))
+        .on('end', reload);
+});
 
 // sass compilation
 gulp.task('sass', function () {
-	return gulp.src(paths.src.sass)
-		.pipe(sassGlob())
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			errLogToConsole: true,
-			outputStyle: 'expanded'
-		}))
+    return gulp.src(paths.src.sass)
+        .pipe(sassGlob())
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'expanded'
+        }))
         .on('error', notify.onError(function (error) {
             return error.message;
         }))
@@ -113,12 +129,12 @@ gulp.task('sass', function () {
             browsers: ['last 5 versions'],
             cascade: false
         }))
-		.on('error', notify.onError(function (error) {
-			return error.message;
-		}))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(paths.dist.css))    
-		.pipe(reload({stream: true}));
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.dist.css))
+        .pipe(reload({stream: true}));
 });
 
 //clean-sass-map
@@ -126,7 +142,7 @@ gulp.task('sass', function () {
 gulp.task('clean-sass-map', function () {
     return gulp.src(
         [
-            paths.clean.cssMap,
+            paths.clean.cssMap
         ],
         {
             read: false
@@ -137,12 +153,12 @@ gulp.task('clean-sass-map', function () {
 
 // sass compilation production - without soursemaps, minified
 gulp.task('sass-production', function () {
-	return gulp.src(paths.src.sass)
-		.pipe(sassGlob())
-		.pipe(sass({
-			errLogToConsole: true,
-			outputStyle: 'compressed'
-		}))
+    return gulp.src(paths.src.sass)
+        .pipe(sassGlob())
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'compressed'
+        }))
         .on('error', notify.onError(function (error) {
             return error.message;
         }))
@@ -150,35 +166,35 @@ gulp.task('sass-production', function () {
             browsers: ['last 5 versions'],
             cascade: false
         }))
-		.on('error', notify.onError(function (error) {
-			return error.message;
-		}))
-		.pipe(gulp.dest(paths.dist.css))    
-		.pipe(reload({stream: true}));
+        .on('error', notify.onError(function (error) {
+            return error.message;
+        }))
+        .pipe(gulp.dest(paths.dist.css))
+        .pipe(reload({stream: true}));
 });
 
 // images optimization
 /*gulp.task('img', function () {
-	return gulp.src(paths.src.img)
-		// take only changed images
-		.pipe(cached(paths.src.img))
-		.pipe(image())
-		.pipe(gulp.dest(paths.dist.img));
+    return gulp.src(paths.src.img)
+        // take only changed images
+        .pipe(cached(paths.src.img))
+        .pipe(image())
+        .pipe(gulp.dest(paths.dist.img));
 });*/
 
 // clean
 gulp.task('clean', function () {
-	return gulp.src(
-		[
-			paths.clean.css,
-			paths.clean.html,
-			paths.clean.templates
-		],
-		{
-			read: false
-		}
-	)
-	.pipe(clean());
+    return gulp.src(
+        [
+            paths.clean.css,
+            paths.clean.html,
+            paths.clean.templates
+        ],
+        {
+            read: false
+        }
+    )
+        .pipe(clean());
 });
 
 // server (browserSync) settings
@@ -203,7 +219,7 @@ var settings = {
 
 // browserSync server (localhost)
 gulp.task('server', function() {
-	browserSync(settings);
+    browserSync(settings);
 
     a_pp.start(port, folderForDesignScreenshots, portForBrowserSync);
 });
@@ -212,16 +228,20 @@ gulp.task('server', function() {
 // watch common files changes for default and production tasks - and re-compile, reload
 gulp.task('watch-common', ['server'], function(){
 
-	// watch pug
-	gulp.watch(paths.watch.pug, function(event, cb) {
-		gulp.start('pug');
-	}, reload);
+    // watch pug
+    gulp.watch(paths.watch.pug, function(event, cb) {
+        gulp.start('pug');
+    }, reload);
 
-	// watch js
-	gulp.watch(paths.watch.js).on('change', reload);
+    gulp.watch(paths.watch.pugLib, function(event, cb) {
+        gulp.start('pug-nocache');
+    }, reload);
 
-	// watch img
-	//gulp.watch(paths.watch.img).on('change', reload);
+    // watch js
+    gulp.watch(paths.watch.js).on('change', reload);
+
+    // watch img
+    //gulp.watch(paths.watch.img).on('change', reload);
 
 });
 
@@ -229,10 +249,10 @@ gulp.task('watch-common', ['server'], function(){
 // watch files changes and re-compile, reload
 gulp.task('watch', ['server', 'watch-common'], function(){
 
-	// watch sass
-	gulp.watch(paths.watch.sass, function(event, cb) {
-		gulp.start('sass');
-	});
+    // watch sass
+    gulp.watch(paths.watch.sass, function(event, cb) {
+        gulp.start('sass');
+    });
 
 });
 
@@ -240,10 +260,10 @@ gulp.task('watch', ['server', 'watch-common'], function(){
 // watch files changes and re-compile, reload
 gulp.task('watch-production', ['server', 'watch-common'], function() {
 
-	// watch sass and do sass-production
-	gulp.watch(paths.watch.sass, function(event, cb) {
-		gulp.start('sass-production');
-	});
+    // watch sass and do sass-production
+    gulp.watch(paths.watch.sass, function(event, cb) {
+        gulp.start('sass-production');
+    });
 
 });
 
@@ -252,18 +272,14 @@ gulp.task('default', ['sass', 'watch']);
 
 // production
 gulp.task('prod', function(cb) {
-	
-	// run functions in order - first clean (delete) files, then others
-	runSequence(
-		//'clean',
-		'clean-sass-map',
-		[/*'img',*/ 'pug', 'sass-production'],
-		//'watch-production',
-		cb
-	);
+
+    // run functions in order - first clean (delete) files, then others
+    runSequence(
+        //'clean',
+        'clean-sass-map',
+        [/*'img',*/ 'pug', 'sass-production'],
+        //'watch-production',
+        cb
+    );
 
 });
-
-
-
-
