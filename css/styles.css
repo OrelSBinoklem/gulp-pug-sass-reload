@@ -21,7 +21,12 @@ html, body, a, button, input, textarea {
   width: 100%;
 }
 
-.clear:after {
+.clearfix:before {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
   content: " ";
   clear: both;
   display: table;

@@ -18,7 +18,11 @@ html, body, a, button, input, textarea
   max-width: 1070px
   width: 100%
 
-.clear:after
+.clearfix:before
+  content: " "
+  display: table
+
+.clearfix:after
   content: " "
   clear: both
   display: table
